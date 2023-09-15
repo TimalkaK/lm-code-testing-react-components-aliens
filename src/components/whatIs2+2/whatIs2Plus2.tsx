@@ -1,4 +1,4 @@
-interface WhatIs2Plus2Props {
+export interface WhatIs2Plus2Props {
   selectedValue : string;
 	onChangeSelectedValue: (value: string) => void;
 }
