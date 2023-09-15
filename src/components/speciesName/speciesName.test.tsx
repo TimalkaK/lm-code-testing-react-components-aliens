@@ -17,6 +17,16 @@ test('renders species name input box', () => {
 	//act
 	render(<SpeciesName {...requiredProps}/>)
 	//assert 
-	const speciesNameInputBox = screen.getByRole("textbox")
+	const speciesNameInputBox = screen.getByRole("textbox");
 	expect(speciesNameInputBox).toBeInTheDocument();
+});
+
+test('displays a species name input', () => {
+	//arrange
+	const requiredProps: SpeciesNameProps = {speciesName: 'dog', onChangeSpeciesName: () => {}}
+	//act
+	render(<SpeciesName {...requiredProps}/>)
+	//assert 
+	const speciesNameInput = screen.getByDisplayValue(requiredProps.speciesName);
+	expect(speciesNameInput).toBeInTheDocument();
 });
