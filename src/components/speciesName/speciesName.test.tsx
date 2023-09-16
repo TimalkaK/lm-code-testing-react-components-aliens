@@ -1,13 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import { SpeciesName, SpeciesNameProps } from './speciesName';
+import userEvent from '@testing-library/user-event';
 
 test('renders species name label', () => {
 	//arrange
 	const requiredProps: SpeciesNameProps = {speciesName: 'humans', onChangeSpeciesName: () => {}}
 	//act
 	render(<SpeciesName {...requiredProps}/>)
-	//assert 
 	const speciesNameLabel = screen.getByLabelText('Species Name');
+	//assert 
 	expect(speciesNameLabel).toBeInTheDocument();
 });
 
@@ -16,8 +17,8 @@ test('renders species name input box', () => {
 	const requiredProps: SpeciesNameProps = {speciesName: 'humans', onChangeSpeciesName: () => {}}
 	//act
 	render(<SpeciesName {...requiredProps}/>)
+	const speciesNameInputBox = screen.getAllByRole("textbox").find(t => t.id === 'speciesName');
 	//assert 
-	const speciesNameInputBox = screen.getByRole("textbox");
 	expect(speciesNameInputBox).toBeInTheDocument();
 });
 
@@ -26,7 +27,24 @@ test('displays a species name input', () => {
 	const requiredProps: SpeciesNameProps = {speciesName: 'dog', onChangeSpeciesName: () => {}}
 	//act
 	render(<SpeciesName {...requiredProps}/>)
-	//assert 
 	const speciesNameInput = screen.getByDisplayValue(requiredProps.speciesName);
+	//assert 
 	expect(speciesNameInput).toBeInTheDocument();
+});
+
+test('input field calls OnChangeSpeciesName function', async () => {
+	//arrange
+	const mockOnChange = jest.fn();
+	const requiredProps: SpeciesNameProps = {speciesName: 'bird', onChangeSpeciesName: mockOnChange}
+	//act
+	render(<SpeciesName {...requiredProps}/>)
+
+	const speciesNameInputBox = screen.getByRole("textbox");
+
+	await userEvent.type(speciesNameInputBox, requiredProps.speciesName);
+	
+	//assert 
+	expect(speciesNameInputBox).toHaveValue(requiredProps.speciesName);
+	expect(mockOnChange).toHaveBeenCalled();
+	//expect(mockOnChange).toHaveBeenCalledWith(requiredProps.speciesName);
 });

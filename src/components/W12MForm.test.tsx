@@ -1,5 +1,6 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import W12MForm from './W12MForm';
+import userEvent from '@testing-library/user-event';
 
 test('renders form element', () => {
 	// we can hold onto the object returned from render()

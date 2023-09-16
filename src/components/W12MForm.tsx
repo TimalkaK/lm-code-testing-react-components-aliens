@@ -5,6 +5,7 @@ import { PlanetName } from './planetName/planetName';
 import { NumberOfBeings } from './numberOfBeings/numberOfBeings';
 import { WhatIs2Plus2 } from './whatIs2+2/whatIs2Plus2';
 import { ReasonForSparing } from './reasonForSparing/reasonForSparing';
+import { SubmitForm } from './submitForm/submitForm';
 
 const W12MForm = () => {
 
@@ -33,7 +34,7 @@ const W12MForm = () => {
 				<li><WhatIs2Plus2 selectedValue={selectedValue} onChangeSelectedValue={(value) => setSelectedValue(value)}/></li>
 				<li><ReasonForSparing reasonForSparing={reasonForSparing} onChangeReasonForSparing={(value) => setReasonForSparing(value)}/></li>
 			</ul>
-			<button onClick={handleClick}>Submit Form</button>
+			<SubmitForm handleClick={handleClick}/>
 		</section>
 	);
 };
