@@ -48,3 +48,18 @@ test('input field calls OnChangeSpeciesName function', async () => {
 	expect(mockOnChange).toHaveBeenCalled();
 	//expect(mockOnChange).toHaveBeenCalledWith(requiredProps.speciesName);
 });
+
+test('input OnChangeSpeciesName has correct parameters', async () => {
+	//arrange
+	const mockOnChange = jest.fn();
+	const requiredProps: SpeciesNameProps = {speciesName: 'reptile', onChangeSpeciesName: mockOnChange}
+	//act
+	render(<SpeciesName {...requiredProps}/>)
+
+	const speciesNameInputBox = screen.getByRole("textbox");
+
+	await userEvent.type(speciesNameInputBox, requiredProps.speciesName);
+	
+	//assert 
+	expect(mockOnChange).toHaveBeenCalledWith(requiredProps.speciesName);
+});
