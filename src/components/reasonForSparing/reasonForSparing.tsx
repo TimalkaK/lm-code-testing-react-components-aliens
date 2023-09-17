@@ -3,7 +3,7 @@ import { ErrorMessages } from "../errorMessage/errorMessage";
 export interface ReasonForSparingProps {
   reasonForSparing : string;
 	onChangeReasonForSparing: (value: string) => void;
-  validate : (value: string) => string[] | undefined;
+  validate : (value: string) => string[];
 }
 
 export const ReasonForSparing : React.FC<ReasonForSparingProps> = (props) => {

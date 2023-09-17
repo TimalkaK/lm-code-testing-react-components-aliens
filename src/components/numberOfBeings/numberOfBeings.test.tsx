@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 test('renders number of beings label', () => {
 	//arrange
-	const requiredProps: NumberOfBeingsProps = {numberOfBeings: 7.8 , onChangeNumberOfBeings: () => {}}
+	const requiredProps: NumberOfBeingsProps = {numberOfBeings: 7.8 , onChangeNumberOfBeings: () => {}, validate: () => []}
 	//act
 	render(<NumberOfBeings {...requiredProps}/>)
 	//assert 
@@ -14,7 +14,7 @@ test('renders number of beings label', () => {
 
 test('renders number of beings input box', () => {
 	//arrange
-	const requiredProps: NumberOfBeingsProps = {numberOfBeings: 7.8, onChangeNumberOfBeings: () => {}}
+	const requiredProps: NumberOfBeingsProps = {numberOfBeings: 7.8, onChangeNumberOfBeings: () => {}, validate: () => []}
 	//act
 	render(<NumberOfBeings {...requiredProps}/>)
 	const NumberOfBeingsInputBox = screen.getAllByRole("textbox").find(t => t.id === 'numberofBeings');
@@ -24,7 +24,7 @@ test('renders number of beings input box', () => {
 
 test('displays number of beings input', () => {
 	//arrange
-	const requiredProps: NumberOfBeingsProps = {numberOfBeings: 3.3, onChangeNumberOfBeings: () => {}}
+	const requiredProps: NumberOfBeingsProps = {numberOfBeings: 3.3, onChangeNumberOfBeings: () => {}, validate: () => []}
 	//act
 	render(<NumberOfBeings {...requiredProps}/>)
 	const planetNameInput = screen.getByDisplayValue(requiredProps.numberOfBeings);
@@ -35,7 +35,7 @@ test('displays number of beings input', () => {
 test('input field calls onChangeNumberOfBeings function', async () => {
 	//arrange
 	const mockOnChange = jest.fn();
-	const requiredProps: NumberOfBeingsProps = {numberOfBeings: 5.5, onChangeNumberOfBeings: mockOnChange}
+	const requiredProps: NumberOfBeingsProps = {numberOfBeings: 5.5, onChangeNumberOfBeings: mockOnChange, validate: () => []}
 	//act
 	render(<NumberOfBeings {...requiredProps}/>)
 
@@ -44,6 +44,6 @@ test('input field calls onChangeNumberOfBeings function', async () => {
 	await userEvent.type(planetNameInputBox, requiredProps.numberOfBeings.toString());
 	
 	//assert 
-	expect(planetNameInputBox).toHaveValue(requiredProps.numberOfBeings);
+	expect(planetNameInputBox).toHaveValue(requiredProps.numberOfBeings.toString());
 	expect(mockOnChange).toHaveBeenCalled();
 });

@@ -3,7 +3,7 @@ import { ErrorMessages } from "../errorMessage/errorMessage";
 export interface SpeciesNameProps {
 	speciesName: string;
 	onChangeSpeciesName: (value: string) => void;
-  validate : (value: string) => string[] | undefined;
+  validate : (value: string) => string[];
 }
 
 export const SpeciesName : React.FC<SpeciesNameProps> = (props) => { 

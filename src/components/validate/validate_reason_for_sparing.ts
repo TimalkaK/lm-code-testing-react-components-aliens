@@ -1,4 +1,4 @@
-export const validateReasonForSparing : (reasonForSparing : string) => string[] | undefined= (reasonForSparing) => {
+export const validateReasonForSparing : (reasonForSparing : string) => string[] = (reasonForSparing) => {
 
   const errorMessages = ["Must be between 17 and 153 characters."];
 
@@ -6,7 +6,7 @@ export const validateReasonForSparing : (reasonForSparing : string) => string[] 
     //return validation message
     return errorMessages;
   }else{
-    return undefined;
+    return [];
   }
 
 };

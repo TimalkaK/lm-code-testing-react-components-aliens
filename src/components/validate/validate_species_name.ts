@@ -1,6 +1,6 @@
 
 
-export const validateSpeciesName : (speciesName : string) => string[] | undefined= (speciesName) => {
+export const validateSpeciesName : (speciesName : string) => string[] = (speciesName) => {
 
   const errorMessages = ["Must be between 3 and 23 characters. No numbers or special characters allowed!"];
 
@@ -10,7 +10,7 @@ export const validateSpeciesName : (speciesName : string) => string[] | undefine
     //return validation message
     return errorMessages;
   }else{
-    return undefined;
+    return [];
   }
 
 };

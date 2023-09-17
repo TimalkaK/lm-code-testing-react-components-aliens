@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 test('renders number of beings label', () => {
 	//arrange
-	const requiredProps: ReasonForSparingProps = {reasonForSparing: 'We love earth', onChangeReasonForSparing: () => {}}
+	const requiredProps: ReasonForSparingProps = {reasonForSparing: 'We love earth', onChangeReasonForSparing: () => {}, validate: () => []}
 	//act
 	render(<ReasonForSparing {...requiredProps}/>)
 	//assert 
@@ -15,7 +15,7 @@ test('renders number of beings label', () => {
 
 test('renders reason for sparing input box', () => {
 	//arrange
-	const requiredProps: ReasonForSparingProps = {reasonForSparing: 'We love earth', onChangeReasonForSparing: () => {}}
+	const requiredProps: ReasonForSparingProps = {reasonForSparing: 'We love earth', onChangeReasonForSparing: () => {}, validate: () => []}
 	//act
 	render(<ReasonForSparing {...requiredProps}/>)
 	//assert 
@@ -25,7 +25,7 @@ test('renders reason for sparing input box', () => {
 
 test('displays reason for sparing input', () => {
 	//arrange
-	const requiredProps: ReasonForSparingProps = {reasonForSparing: 'Mars is beautiful', onChangeReasonForSparing: () => {}}
+	const requiredProps: ReasonForSparingProps = {reasonForSparing: 'Mars is beautiful', onChangeReasonForSparing: () => {}, validate: () => []}
 	//act
 	render(<ReasonForSparing {...requiredProps}/>)
 	const reasonForSparingInput = screen.getByDisplayValue(requiredProps.reasonForSparing);
@@ -36,7 +36,7 @@ test('displays reason for sparing input', () => {
 test('input field calls onChangeReasonForSparing function', async () => {
 	//arrange
 	const mockOnChange = jest.fn();
-	const requiredProps: ReasonForSparingProps = {reasonForSparing: 'Our souls will be destroyed', onChangeReasonForSparing: mockOnChange}
+	const requiredProps: ReasonForSparingProps = {reasonForSparing: 'Our souls will be destroyed', onChangeReasonForSparing: mockOnChange, validate: () => []}
 	//act
 	render(<ReasonForSparing {...requiredProps}/>)
 

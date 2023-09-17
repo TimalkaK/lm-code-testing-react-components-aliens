@@ -1,4 +1,4 @@
-export const validatePlanetName : (planetName : string) => string[] | undefined= (planetName) => {
+export const validatePlanetName : (planetName : string) => string[] = (planetName) => {
 
   const errorMessages = ["Must be between 2 and 49 characters. Numbers are allowed, but no special characters."];
 
@@ -8,7 +8,7 @@ export const validatePlanetName : (planetName : string) => string[] | undefined=
     //return validation message
     return errorMessages;
   }else{
-    return undefined;
+    return [];
   }
 
 };

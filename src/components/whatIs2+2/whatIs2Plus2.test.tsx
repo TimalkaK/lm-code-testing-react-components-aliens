@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 test('renders number of beings label', () => {
 	//arrange
-	const requiredProps: WhatIs2Plus2Props = {selectedValue: 'Not 4', onChangeSelectedValue: () => {}}
+	const requiredProps: WhatIs2Plus2Props = {selectedValue: 'Not 4', onChangeSelectedValue: () => {}, validate: () => []}
 	//act
 	render(<WhatIs2Plus2 {...requiredProps}/>)
 	const whatIs2Plus2Label = screen.getByLabelText('What is 2 + 2?');
@@ -14,7 +14,7 @@ test('renders number of beings label', () => {
 
 test('renders what is 2+2 input box', () => {
 	//arrange
-	const requiredProps: WhatIs2Plus2Props = {selectedValue: '4', onChangeSelectedValue: () => {}}
+	const requiredProps: WhatIs2Plus2Props = {selectedValue: '4', onChangeSelectedValue: () => {}, validate: () => []}
 	//act
 	render(<WhatIs2Plus2 {...requiredProps}/>)
 	const WhatIs2Plus2InputBox = screen.getAllByRole("combobox").find(c => c.id === 'whatIs2+2');
@@ -26,7 +26,7 @@ test('renders what is 2+2 input box', () => {
 
 test('displays reason for sparing input', () => {
 	//arrange
-	const requiredProps: WhatIs2Plus2Props = {selectedValue: 'Not 4', onChangeSelectedValue: () => {}}
+	const requiredProps: WhatIs2Plus2Props = {selectedValue: 'Not 4', onChangeSelectedValue: () => {}, validate: () => []}
 	//act
 	render(<WhatIs2Plus2 {...requiredProps}/>)
 	const WhatIs2Plus2Input = screen.getByDisplayValue(requiredProps.selectedValue);
@@ -37,7 +37,7 @@ test('displays reason for sparing input', () => {
 test('input field calls onChangeReasonForSparing function', async () => {
 	//arrange
 	const mockOnChange = jest.fn();
-	const requiredProps: WhatIs2Plus2Props = {selectedValue: '4', onChangeSelectedValue: mockOnChange}
+	const requiredProps: WhatIs2Plus2Props = {selectedValue: '4', onChangeSelectedValue: mockOnChange, validate: () => []}
 	//act
 	render(<WhatIs2Plus2 {...requiredProps}/>)
 

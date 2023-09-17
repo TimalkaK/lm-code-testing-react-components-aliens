@@ -3,7 +3,7 @@ import { ErrorMessages } from "../errorMessage/errorMessage";
 export interface PlanetNameProps {
 	planetName: string;
 	onChangePlanetName: (value: string) => void;
-  validate : (value: string) => string[] | undefined;
+  validate : (value: string) => string[];
 }
 
 export const PlanetName : React.FC<PlanetNameProps> = (props) => {

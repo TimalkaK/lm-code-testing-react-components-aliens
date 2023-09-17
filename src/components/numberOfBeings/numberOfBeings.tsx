@@ -3,7 +3,7 @@ import { ErrorMessages } from "../errorMessage/errorMessage";
 export interface NumberOfBeingsProps {
 	numberOfBeings: number;
 	onChangeNumberOfBeings: (value: number) => void;
-  validate : (value: number) => string[] | undefined;
+  validate : (value: number) => string[];
 }
 
 export const NumberOfBeings : React.FC<NumberOfBeingsProps> = (props) => {

@@ -5,7 +5,7 @@ export interface ErrorMessagesProps {
 export const ErrorMessages : React.FC<ErrorMessagesProps> = ({errorMessages}) => {
 return (
       <>
-      <p className="error-messages">{errorMessages}</p>
+      <p className="error-messages" id="errorMessages">{errorMessages}</p>
     </>
     )
 
