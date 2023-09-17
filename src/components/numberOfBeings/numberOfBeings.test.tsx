@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { NumberOfBeings, NumberOfBeingsProps } from './numberOfBeings';
+import userEvent from '@testing-library/user-event';
 
 test('renders number of beings label', () => {
 	//arrange
@@ -16,7 +17,33 @@ test('renders number of beings input box', () => {
 	const requiredProps: NumberOfBeingsProps = {numberOfBeings: '7.8 billion', onChangeNumberOfBeings: () => {}}
 	//act
 	render(<NumberOfBeings {...requiredProps}/>)
+	const NumberOfBeingsInputBox = screen.getAllByRole("textbox").find(t => t.id === 'numberofBeings');
 	//assert 
-	const NumberOfBeingsInputBox = screen.getByRole("textbox")
 	expect(NumberOfBeingsInputBox).toBeInTheDocument();
+});
+
+test('displays number of beings input', () => {
+	//arrange
+	const requiredProps: NumberOfBeingsProps = {numberOfBeings: '3.3 billion', onChangeNumberOfBeings: () => {}}
+	//act
+	render(<NumberOfBeings {...requiredProps}/>)
+	const planetNameInput = screen.getByDisplayValue(requiredProps.numberOfBeings);
+	//assert 
+	expect(planetNameInput).toBeInTheDocument();
+});
+
+test('input field calls onChangeNumberOfBeings function', async () => {
+	//arrange
+	const mockOnChange = jest.fn();
+	const requiredProps: NumberOfBeingsProps = {numberOfBeings: 'mars', onChangeNumberOfBeings: mockOnChange}
+	//act
+	render(<NumberOfBeings {...requiredProps}/>)
+
+	const planetNameInputBox = screen.getByRole("textbox");
+
+	await userEvent.type(planetNameInputBox, requiredProps.numberOfBeings);
+	
+	//assert 
+	expect(planetNameInputBox).toHaveValue(requiredProps.numberOfBeings);
+	expect(mockOnChange).toHaveBeenCalled();
 });
